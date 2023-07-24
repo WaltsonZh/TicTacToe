@@ -6,7 +6,7 @@
 * {
     font-family: OpenSans;
     color: white;
-    background-color: hsl(0, 0%, 27%);
+    background-color: hsl(210, 40%, 40%);
 }
 
 table {
@@ -19,7 +19,7 @@ table {
 }
 
 td{
-    border: hsl(0, 0%, 57%) solid 4px;
+    border: hsl(210, 40%, 30%) solid 4px;
     padding: 10px;
     height: 110px;
     width: 110px;
