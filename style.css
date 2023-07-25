@@ -1,67 +1,100 @@
 @font-face {
-    font-family: OpenSans;
-    src: url(fonts/OpenSans.ttf);
+	font-family: SatoshiVariable;
+	src: url(fonts/SatoshiVariable.ttf);
 }
 
 * {
-    font-family: OpenSans;
-    color: white;
-    background-color: hsl(210, 40%, 40%);
+	font-family: SatoshiVariable, sans-serif;
+	color: white;
+	background-color: hsl(210, 40%, 40%);
+}
+
+button {
+	background-color: hsl(210, 40%, 60%);
+	font-size: 30px;
+	height: 50px;
+	width: 150px;
+	border-style: none;
+    border-radius: 20px;
+    margin: 0px 20px;
+    box-shadow: 4px 4px hsla(0, 0%, 0%, 0.2);
+    cursor: pointer;
+
+    transition: all 0.3s;
+}
+
+button:hover {
+    transform: translateY(-4px);
+}
+
+button:active {
+    background-color: hsl(210, 40%, 50%);
+    transform: translateY(2px);
 }
 
 table {
+	display: flex;
+	justify-content: center;
+	margin-top: 20px;
+	box-sizing: border-box;
+	overflow-wrap: none;
+	border-spacing: 0px 0px;
+}
+
+td {
+	border: hsl(210, 40%, 30%) solid 4px;
+	padding: 10px;
+	height: 110px;
+	width: 110px;
+	text-align: center;
+}
+
+.btn {
     display: flex;
     justify-content: center;
-    margin-top: 100px;
-    box-sizing: border-box;
-    overflow-wrap: none;
-    border-spacing: 0px 0px;
+    padding: 50px;
 }
 
-td{
-    border: hsl(210, 40%, 30%) solid 4px;
-    padding: 10px;
-    height: 110px;
-    width: 110px;
-    text-align: center;
+#circlebtn {
+    padding-bottom: 6px;
 }
 
-#topLeft{
-    border-top: none;
-    border-left: none;
+#topLeft {
+	border-top: none;
+	border-left: none;
 }
 
-#top{
-    border-top: none;
+#top {
+	border-top: none;
 }
 
-#topRight{
-    border-top: none;
-    border-right: none;
+#topRight {
+	border-top: none;
+	border-right: none;
 }
 
-#left{
-    border-left: none;
+#left {
+	border-left: none;
 }
 
-#mid{
-    margin: auto;
+#mid {
+	margin: auto;
 }
 
-#right{
-    border-right: none;
+#right {
+	border-right: none;
 }
 
-#botLeft{
-    border-left: none;
-    border-bottom: none;
+#botLeft {
+	border-left: none;
+	border-bottom: none;
 }
 
-#bot{
-    border-bottom: none;
+#bot {
+	border-bottom: none;
 }
 
-#botRight{
-    border-bottom: none;
-    border-right: none;
+#botRight {
+	border-bottom: none;
+	border-right: none;
 }
