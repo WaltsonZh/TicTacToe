@@ -8,7 +8,7 @@ const resetbtn = document.getElementById("resetbtn");
 const cross = document.querySelectorAll(".cross");
 const circle = document.querySelectorAll(".circle");
 
-let empty = new Array(9).fill(false);
+let empty = new Array(9).fill(true);
 let playerX = true;
 
 cross.forEach((cro) => {
@@ -55,19 +55,31 @@ circle.forEach((cir) => {
 
 circlebtn.addEventListener("click", () => {
 	playerX = false;
-	circlebtn.style.disabled = true;
+	crossbtn.disabled = true;
+	circlebtn.disabled = true;
 	document.getElementById("hint").innerHTML = "Turn of" + `<span style="margin-top: -5px; margin-left: 18px">o</span>`;
 });
 
 crossbtn.addEventListener("click", () => {
 	playerX = true;
-	crossbtn.style.disabled = true;
+	crossbtn.disabled = true;
+	circlebtn.disabled = true;
 	document.getElementById("hint").innerHTML = "Turn of &times;";
 });
 
 board.forEach((block, index) => {
 	block.addEventListener("click", () => {
 		show(block, index);
+	});
+
+	block.addEventListener("mouseover", () => {
+		if (empty[index]) {
+			blockMouseover(block);
+		}
+	});
+
+	block.addEventListener("mouseleave", () => {
+		blockMouseleave(block);
 	});
 });
 
@@ -78,9 +90,9 @@ resetbtn.addEventListener("click", () => {
 		});
 	});
 
-	crossbtn.style.disabled = false;
-	circlebtn.style.disabled = false;
-	empty.fill(false);
+	crossbtn.disabled = false;
+	circlebtn.disabled = false;
+	empty.fill(true);
 
 	document.getElementById("hint").innerHTML = "Chose your turn &uparrow;";
 });
@@ -91,5 +103,14 @@ function show(block, index) {
 	} else {
 		block.querySelector(".circle").style.display = "inline";
 	}
-	empty[index] = true;
+	block.style.backgroundColor = "hsl(210, 40%, 40%)";
+	empty[index] = false;
+}
+
+function blockMouseover(block) {
+	block.style.backgroundColor = "hsl(210, 40%, 45%)";
+}
+
+function blockMouseleave(block) {
+	block.style.backgroundColor = "hsl(210, 40%, 40%)";
 }
