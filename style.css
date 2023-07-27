@@ -46,9 +46,11 @@ td {
 	border: hsl(210, 40%, 30%) solid 4px;
 	height: 110px;
 	width: 110px;
+	cursor: pointer;
 }
 
 canvas {
+	display: none;
 	background: transparent;
 	position: absolute;
 	top: 0px;
@@ -76,15 +78,15 @@ canvas {
     padding-bottom: 6px;
 }
 
-#topLeft {
-	border-top: none;
-	border-left: none;
-}
-
 #hint {
 	display: flex;
 	justify-content: center;
 	font-size: 48px;
+}
+
+#topLeft {
+	border-top: none;
+	border-left: none;
 }
 
 #top {

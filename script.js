@@ -3,11 +3,13 @@ const board = document.querySelectorAll("td");
 const crossbtn = document.getElementById("crossbtn");
 const circlebtn = document.getElementById("circlebtn");
 
-const reset = document.getElementById("restartbtn");
-reset.style.display = "none";
+const resetbtn = document.getElementById("resetbtn");
 
 const cross = document.querySelectorAll(".cross");
 const circle = document.querySelectorAll(".circle");
+
+let empty = new Array(9).fill(false);
+let playerX = true;
 
 cross.forEach((cro) => {
 	const centerX = cro.width / 2;
@@ -30,8 +32,6 @@ cross.forEach((cro) => {
 	cav.moveTo(0, -40);
 	cav.lineTo(0, 40);
 	cav.stroke();
-
-	cro.style.display = "none";
 });
 
 circle.forEach((cir) => {
@@ -51,36 +51,42 @@ circle.forEach((cir) => {
 
 	cav.stroke();
 	cav.fill();
-
-	cir.style.display = "none";
 });
 
 circlebtn.addEventListener("click", () => {
-	if (circle[0].style.display == "none") {
-		circle.forEach((cir) => {
-			cir.style.display = "inline";
-		});
-	} else {
-		circle.forEach((cir) => {
-			cir.style.display = "none";
-		});
-	}
+	playerX = false;
+	circlebtn.style.disabled = true;
+    document.getElementById("hint").innerHTML = "Turn of" + `<span style="margin-top: -5px; margin-left: 18px">o</span>`;
 });
 
 crossbtn.addEventListener("click", () => {
-	if (cross[0].style.display == "none") {
-		cross.forEach((cro) => {
-			cro.style.display = "inline";
-		});
-	} else {
-		cross.forEach((cro) => {
-			cro.style.display = "none";
-		});
-	}
+	playerX = true;
+    crossbtn.style.disabled = true;
+    document.getElementById("hint").innerHTML = "Turn of &times;";
 });
 
-function resetBoard() {
-	board.forEach((grid) => {
-		grid.textContent = "";
+board.forEach((block, index) => {
+    block.addEventListener('click', () => {
+        show(block, index);
+    });
+});
+
+resetbtn.addEventListener('click', () => {
+    board.forEach((block) => {
+		block.querySelectorAll("canvas").forEach(cav => {
+            cav.style.display = "none";
+        });
 	});
+    crossbtn.style.disabled = false;
+    circlebtn.style.disabled = false;
+    document.getElementById("hint").innerHTML = "Chose your turn &uparrow;";
+});
+
+function show(block, index) {
+    if (playerX) {
+        block.querySelector(".cross").style.display = "inline";
+    } else {
+        block.querySelector(".circle").style.display = "inline";
+    }
+    empty[index] = true;
 }
