@@ -77,6 +77,12 @@ canvas {
 	border-left: none;
 }
 
+#hint {
+	display: flex;
+	justify-content: center;
+	font-size: 48px;
+}
+
 #top {
 	border-top: none;
 }
