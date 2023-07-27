@@ -35,7 +35,7 @@ button:active {
 table {
 	display: flex;
 	justify-content: center;
-	margin-top: 20px;
+	margin-top: 40px;
 	box-sizing: border-box;
 	overflow-wrap: none;
 	border-spacing: 0px 0px;
