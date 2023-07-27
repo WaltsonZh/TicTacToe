@@ -24,7 +24,7 @@ button {
 }
 
 button:hover {
-    transform: translateY(-4px);
+    transform: translateY(-2px);
 }
 
 button:active {
@@ -42,17 +42,29 @@ table {
 }
 
 td {
+	position: relative;
 	border: hsl(210, 40%, 30%) solid 4px;
-	padding: 10px;
 	height: 110px;
 	width: 110px;
-	text-align: center;
+}
+
+canvas {
+	position: absolute;
+	top: 0px;
 }
 
 .btn {
     display: flex;
     justify-content: center;
     padding: 50px;
+}
+
+.cross {
+	z-index: 1;
+}
+
+.circle {
+	z-index: 2;
 }
 
 #circlebtn {
