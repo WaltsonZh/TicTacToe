@@ -49,6 +49,7 @@ td {
 }
 
 canvas {
+	background: transparent;
 	position: absolute;
 	top: 0px;
 }
@@ -60,11 +61,11 @@ canvas {
 }
 
 .cross {
-	z-index: 1;
+	z-index: 2;
 }
 
 .circle {
-	z-index: 2;
+	z-index: 1;
 }
 
 #circlebtn {
