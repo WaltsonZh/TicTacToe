@@ -56,37 +56,40 @@ circle.forEach((cir) => {
 circlebtn.addEventListener("click", () => {
 	playerX = false;
 	circlebtn.style.disabled = true;
-    document.getElementById("hint").innerHTML = "Turn of" + `<span style="margin-top: -5px; margin-left: 18px">o</span>`;
+	document.getElementById("hint").innerHTML = "Turn of" + `<span style="margin-top: -5px; margin-left: 18px">o</span>`;
 });
 
 crossbtn.addEventListener("click", () => {
 	playerX = true;
-    crossbtn.style.disabled = true;
-    document.getElementById("hint").innerHTML = "Turn of &times;";
+	crossbtn.style.disabled = true;
+	document.getElementById("hint").innerHTML = "Turn of &times;";
 });
 
 board.forEach((block, index) => {
-    block.addEventListener('click', () => {
-        show(block, index);
-    });
+	block.addEventListener("click", () => {
+		show(block, index);
+	});
 });
 
-resetbtn.addEventListener('click', () => {
-    board.forEach((block) => {
-		block.querySelectorAll("canvas").forEach(cav => {
-            cav.style.display = "none";
-        });
+resetbtn.addEventListener("click", () => {
+	board.forEach((block) => {
+		block.querySelectorAll("canvas").forEach((cav) => {
+			cav.style.display = "none";
+		});
 	});
-    crossbtn.style.disabled = false;
-    circlebtn.style.disabled = false;
-    document.getElementById("hint").innerHTML = "Chose your turn &uparrow;";
+
+	crossbtn.style.disabled = false;
+	circlebtn.style.disabled = false;
+	empty.fill(false);
+
+	document.getElementById("hint").innerHTML = "Chose your turn &uparrow;";
 });
 
 function show(block, index) {
-    if (playerX) {
-        block.querySelector(".cross").style.display = "inline";
-    } else {
-        block.querySelector(".circle").style.display = "inline";
-    }
-    empty[index] = true;
+	if (playerX) {
+		block.querySelector(".cross").style.display = "inline";
+	} else {
+		block.querySelector(".circle").style.display = "inline";
+	}
+	empty[index] = true;
 }
