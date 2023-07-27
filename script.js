@@ -45,8 +45,8 @@ circle.forEach((cir) => {
 	cav.arc(centerX, centerY, 32, 0, Math.PI * 2, true);
 	cav.closePath();
 
-	cav.strokeStyle = "hsl(210, 40%, 30%)";
-	cav.fillStyle = "hsl(210, 40%, 30%)";
+	cav.strokeStyle = "hsl(210, 40%, 25%)";
+	cav.fillStyle = "hsl(210, 40%, 25%)";
 	cav.lineWidth = 10;
 
 	cav.stroke();
