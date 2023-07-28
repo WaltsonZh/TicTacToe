@@ -10,6 +10,8 @@ const circle = document.querySelectorAll(".circle");
 
 let empty = new Array(9).fill(true);
 let playerX = true;
+let enabled = true;
+let rounds = 0;
 
 cross.forEach((cro) => {
 	const centerX = cro.width / 2;
@@ -58,6 +60,11 @@ circlebtn.addEventListener("click", () => {
 	crossbtn.disabled = true;
 	circlebtn.disabled = true;
 	document.getElementById("hint").innerHTML = "Turn of" + `<span style="margin-top: -5px; margin-left: 18px">o</span>`;
+
+    setTimeout(() => {
+        enabled = false;
+        show(board[0], 0);
+    }, 600);
 });
 
 crossbtn.addEventListener("click", () => {
@@ -69,7 +76,21 @@ crossbtn.addEventListener("click", () => {
 
 board.forEach((block, index) => {
 	block.addEventListener("click", () => {
-		show(block, index);
+        if (empty[index] && enabled) {
+            show(block, index);
+
+            setTimeout(() => {
+				position = algorithm();
+				if (position == -1) {
+					showResult();
+				} else {
+					show(board[position], position);
+				}
+                if (rounds == 9) {
+                    showResult();
+                }
+			}, 600);
+        }
 	});
 
 	block.addEventListener("mouseover", () => {
@@ -93,6 +114,9 @@ resetbtn.addEventListener("click", () => {
 	crossbtn.disabled = false;
 	circlebtn.disabled = false;
 	empty.fill(true);
+    playerX = true;
+    rounds = 0;
+    enabled = true;
 
 	document.getElementById("hint").innerHTML = "Chose your turn &uparrow;";
 });
@@ -100,11 +124,17 @@ resetbtn.addEventListener("click", () => {
 function show(block, index) {
 	if (playerX) {
 		block.querySelector(".cross").style.display = "inline";
+		document.getElementById("hint").innerHTML = "Turn of" + `<span style="margin-top: -5px; margin-left: 18px">o</span>`;
+		playerX = false;
 	} else {
 		block.querySelector(".circle").style.display = "inline";
+		document.getElementById("hint").innerHTML = "Turn of &times;";
+		playerX = true;
 	}
 	block.style.backgroundColor = "hsl(210, 40%, 40%)";
 	empty[index] = false;
+    rounds += 1;
+    enabled = !enabled;
 }
 
 function blockMouseover(block) {
@@ -113,4 +143,21 @@ function blockMouseover(block) {
 
 function blockMouseleave(block) {
 	block.style.backgroundColor = "hsl(210, 40%, 40%)";
+}
+
+function algorithm() {
+    if (rounds >= 9) {
+        return -1;
+    }
+
+	let index;
+	do {
+		index = Math.floor(Math.random() * 9);
+	} while (empty[index] == false);
+
+	return index;
+}
+
+function showResult() {
+    document.getElementById("hint").innerHTML = "Draw";
 }
