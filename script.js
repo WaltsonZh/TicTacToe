@@ -13,6 +13,9 @@ let playerX = true;
 let enabled = true;
 let rounds = 0;
 
+let game = new Array(9).fill(0); // 0: empty, 1: cross, 2: circle
+let finished = false;
+
 cross.forEach((cro) => {
 	const centerX = cro.width / 2;
 	const centerY = cro.height / 2;
@@ -61,10 +64,10 @@ circlebtn.addEventListener("click", () => {
 	circlebtn.disabled = true;
 	document.getElementById("hint").innerHTML = "Turn of" + `<span style="margin-top: -5px; margin-left: 18px">o</span>`;
 
-    setTimeout(() => {
-        enabled = false;
-        show(board[0], 0);
-    }, 600);
+	setTimeout(() => {
+		enabled = false;
+		show(board[0], 0);
+	}, 600);
 });
 
 crossbtn.addEventListener("click", () => {
@@ -76,21 +79,19 @@ crossbtn.addEventListener("click", () => {
 
 board.forEach((block, index) => {
 	block.addEventListener("click", () => {
-        if (empty[index] && enabled) {
-            show(block, index);
+		if (empty[index] && enabled) {
+			show(block, index);
 
-            setTimeout(() => {
+			setTimeout(() => {
 				position = algorithm();
-				if (position == -1) {
-					showResult();
-				} else {
+				if (position != -1) {
 					show(board[position], position);
 				}
-                if (rounds == 9) {
-                    showResult();
-                }
+				if (rounds == 9) {
+					showResult();
+				}
 			}, 600);
-        }
+		}
 	});
 
 	block.addEventListener("mouseover", () => {
@@ -114,9 +115,11 @@ resetbtn.addEventListener("click", () => {
 	crossbtn.disabled = false;
 	circlebtn.disabled = false;
 	empty.fill(true);
-    playerX = true;
-    rounds = 0;
-    enabled = true;
+	playerX = true;
+	rounds = 0;
+	enabled = true;
+	game.fill(0);
+	finished = false;
 
 	document.getElementById("hint").innerHTML = "Chose your turn &uparrow;";
 });
@@ -125,16 +128,19 @@ function show(block, index) {
 	if (playerX) {
 		block.querySelector(".cross").style.display = "inline";
 		document.getElementById("hint").innerHTML = "Turn of" + `<span style="margin-top: -5px; margin-left: 18px">o</span>`;
+		game[index] = 1;
 		playerX = false;
 	} else {
 		block.querySelector(".circle").style.display = "inline";
 		document.getElementById("hint").innerHTML = "Turn of &times;";
+		game[index] = 2;
 		playerX = true;
 	}
 	block.style.backgroundColor = "hsl(210, 40%, 40%)";
 	empty[index] = false;
-    rounds += 1;
-    enabled = !enabled;
+	rounds += 1;
+	enabled = !enabled;
+	showResult();
 }
 
 function blockMouseover(block) {
@@ -146,9 +152,9 @@ function blockMouseleave(block) {
 }
 
 function algorithm() {
-    if (rounds >= 9) {
-        return -1;
-    }
+	if (rounds >= 9 || finished) {
+		return -1;
+	}
 
 	let index;
 	do {
@@ -159,5 +165,26 @@ function algorithm() {
 }
 
 function showResult() {
-    document.getElementById("hint").innerHTML = "Draw";
+	for (let i = 0; i < 3; i++) {
+		if (game[i * 3] == game[i * 3 + 1] && game[i * 3] == game[i * 3 + 2] && game[i * 3] != 0) {
+			document.getElementById("hint").innerHTML = game[i * 3] == 1 ? "&times; win!" : `<span style="margin-top: -5px; margin-right: 18px;">o</span>` + " win!";
+			finished = true;
+		} else if (game[i] == game[i + 3] && game[i] == game[i + 6] && game[i] != 0) {
+			document.getElementById("hint").innerHTML = game[i] == 1 ? "&times; win!" : `<span style="margin-top: -5px; margin-right: 18px;">o</span>` + " win!";
+			finished = true;
+		}
+	}
+
+	if ((game[0] == game[4] && game[4] == game[8] && game[4] != 0) || (game[2] == game[4] && game[4] == game[6] && game[4] != 0)) {
+		document.getElementById("hint").innerHTML = game[4] == 1 ? "&times; win!" : `<span style="margin-top: -5px; margin-right: 18px;">o</span>` + " win!";
+		finished = true;
+	}
+
+	if (rounds == 9 && finished != true) {
+		document.getElementById("hint").innerHTML = "Draw!";
+	}
+
+	if (finished || rounds == 9) {
+		empty.fill(false);
+	}
 }
