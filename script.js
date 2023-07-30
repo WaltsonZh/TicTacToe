@@ -59,19 +59,17 @@ circle.forEach((cir) => {
 });
 
 circlebtn.addEventListener("click", () => {
-	playerX = false;
 	crossbtn.disabled = true;
 	circlebtn.disabled = true;
-	document.getElementById("hint").innerHTML = "Turn of" + `<span style="margin-top: -5px; margin-left: 18px">o</span>`;
+	document.getElementById("hint").innerHTML = "Turn of &times;";
 
 	setTimeout(() => {
 		enabled = false;
-		show(board[0], 0);
+		show(board[1], 1);
 	}, 600);
 });
 
 crossbtn.addEventListener("click", () => {
-	playerX = true;
 	crossbtn.disabled = true;
 	circlebtn.disabled = true;
 	document.getElementById("hint").innerHTML = "Turn of &times;";
@@ -129,17 +127,16 @@ function show(block, index) {
 		block.querySelector(".cross").style.display = "inline";
 		document.getElementById("hint").innerHTML = "Turn of" + `<span style="margin-top: -5px; margin-left: 18px">o</span>`;
 		game[index] = 1;
-		playerX = false;
 	} else {
 		block.querySelector(".circle").style.display = "inline";
 		document.getElementById("hint").innerHTML = "Turn of &times;";
 		game[index] = 2;
-		playerX = true;
 	}
 	block.style.backgroundColor = "hsl(210, 40%, 40%)";
 	empty[index] = false;
 	rounds += 1;
 	enabled = !enabled;
+	playerX = !playerX;
 	showResult();
 	
 	if(finished || rounds == 9) {
@@ -166,6 +163,25 @@ function algorithm() {
 	do {
 		index = Math.floor(Math.random() * 9);
 	} while (empty[index] == false);
+
+	// switch(rounds) {
+	// 	case 1: // X
+	// 		break;
+	// 	case 2: // O
+	// 		break;
+	// 	case 3:
+	// 		break;
+	// 	case 4:
+	// 		break;
+	// 	case 5:
+	// 		break;
+	// 	case 6:
+	// 		break;
+	// 	case 7:
+	// 		break;
+	// 	case 8:
+	// 		break;
+	// }
 
 	return index;
 }
