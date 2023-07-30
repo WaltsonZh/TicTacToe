@@ -123,3 +123,7 @@ canvas {
 	border-bottom: none;
 	border-right: none;
 }
+
+#resetbtn {
+	display: none;
+}

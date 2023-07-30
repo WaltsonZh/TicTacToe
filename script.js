@@ -141,6 +141,12 @@ function show(block, index) {
 	rounds += 1;
 	enabled = !enabled;
 	showResult();
+	
+	if(finished || rounds == 9) {
+		resetbtn.style.display = "inline";
+	} else {
+		resetbtn.style.display = "none";
+	}
 }
 
 function blockMouseover(block) {
@@ -152,7 +158,7 @@ function blockMouseleave(block) {
 }
 
 function algorithm() {
-	if (rounds >= 9 || finished) {
+	if (rounds == 9 || finished) {
 		return -1;
 	}
 
