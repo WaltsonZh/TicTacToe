@@ -191,7 +191,8 @@ function algorithm() {
                 index = 0
             } else if (tmp == 6 || tmp == 8) {
                 index = tmp - 6
-            } else { // tmp == 7
+            } else {
+                // tmp == 7
                 index = 6
             }
             break
@@ -208,7 +209,7 @@ function algorithm() {
                     if (game[7] == 0) {
                         index = 7
                     } else {
-                        index = game[6] == 0 ? 6 : 8;
+                        index = game[6] == 0 ? 6 : 8
                     }
                 } else if (tmp == 3 || tmp == 5 || tmp == 7) {
                     index = 0
