@@ -1,20 +1,20 @@
 @font-face {
-	font-family: SatoshiVariable;
-	src: url(fonts/SatoshiVariable.ttf);
+    font-family: SatoshiVariable;
+    src: url(fonts/SatoshiVariable.ttf);
 }
 
 * {
-	font-family: SatoshiVariable, sans-serif;
-	color: white;
-	background-color: hsl(210, 40%, 40%);
+    font-family: SatoshiVariable, sans-serif;
+    color: white;
+    background-color: hsl(210, 40%, 40%);
 }
 
 button {
-	background-color: hsl(210, 40%, 60%);
-	font-size: 30px;
-	height: 50px;
-	width: 150px;
-	border-style: none;
+    background-color: hsl(210, 40%, 60%);
+    font-size: 30px;
+    height: 50px;
+    width: 150px;
+    border-style: none;
     border-radius: 20px;
     margin: 0px 20px;
     box-shadow: 4px 4px hsla(0, 0%, 0%, 0.2);
@@ -33,27 +33,27 @@ button:active {
 }
 
 table {
-	display: flex;
-	justify-content: center;
-	margin-top: 40px;
-	box-sizing: border-box;
-	overflow-wrap: none;
-	border-spacing: 0px 0px;
+    display: flex;
+    justify-content: center;
+    margin-top: 40px;
+    box-sizing: border-box;
+    overflow-wrap: none;
+    border-spacing: 0px 0px;
 }
 
 td {
-	position: relative;
-	border: hsl(210, 40%, 30%) solid 4px;
-	height: 110px;
-	width: 110px;
-	cursor: pointer;
+    position: relative;
+    border: hsl(210, 40%, 30%) solid 4px;
+    height: 110px;
+    width: 110px;
+    cursor: pointer;
 }
 
 canvas {
-	display: none;
-	background: transparent;
-	position: absolute;
-	top: 0px;
+    display: none;
+    background: transparent;
+    position: absolute;
+    top: 0px;
 }
 
 .btn {
@@ -63,15 +63,15 @@ canvas {
 }
 
 .cross {
-	z-index: 2;
+    z-index: 2;
 }
 
 .circle {
-	z-index: 1;
+    z-index: 1;
 }
 
 #title {
-	text-align: center;
+    text-align: center;
 }
 
 #circlebtn {
@@ -79,51 +79,51 @@ canvas {
 }
 
 #hint {
-	display: flex;
-	justify-content: center;
-	font-size: 48px;
+    display: flex;
+    justify-content: center;
+    font-size: 48px;
 }
 
 #topLeft {
-	border-top: none;
-	border-left: none;
+    border-top: none;
+    border-left: none;
 }
 
 #top {
-	border-top: none;
+    border-top: none;
 }
 
 #topRight {
-	border-top: none;
-	border-right: none;
+    border-top: none;
+    border-right: none;
 }
 
 #left {
-	border-left: none;
+    border-left: none;
 }
 
 #mid {
-	margin: auto;
+    margin: auto;
 }
 
 #right {
-	border-right: none;
+    border-right: none;
 }
 
 #botLeft {
-	border-left: none;
-	border-bottom: none;
+    border-left: none;
+    border-bottom: none;
 }
 
 #bot {
-	border-bottom: none;
+    border-bottom: none;
 }
 
 #botRight {
-	border-bottom: none;
-	border-right: none;
+    border-bottom: none;
+    border-right: none;
 }
 
 #resetbtn {
-	display: none;
+    display: none;
 }

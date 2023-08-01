@@ -1,70 +1,71 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>TicTacToe</title>
-    <link rel="stylesheet" href="style.css">
-</head>
-<body>
-    <h1 id="title">Tic-Tac-Toe</h1><hr>
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>TicTacToe</title>
+        <link rel="stylesheet" href="style.css" />
+    </head>
+    <body>
+        <h1 id="title">Tic-Tac-Toe</h1>
+        <hr />
 
-    <div class="btn">
-        <button id="crossbtn">&times;</button>
-        <button id="circlebtn">o</button>
-    </div>
+        <div class="btn">
+            <button id="crossbtn">&times;</button>
+            <button id="circlebtn">o</button>
+        </div>
 
-    <div id="hint">Chose your turn &uparrow;</div>
+        <div id="hint">Chose your turn &uparrow;</div>
 
-    <table>
-        <tbody>
-            <tr>
-                <td id="topLeft">
-                    <canvas class="cross" width=110 height=110></canvas>
-                    <canvas class="circle" width=110 height=110></canvas>
-                </td>
-                <td id="top">
-                    <canvas class="cross" width=110 height=110></canvas>
-                    <canvas class="circle" width=110 height=110></canvas>
-                </td>
-                <td id="topRight">
-                    <canvas class="cross" width=110 height=110></canvas>
-                    <canvas class="circle" width=110 height=110></canvas>
-                </td>
-            </tr>
-            <tr>
-                <td id="left">
-                    <canvas class="cross" width=110 height=110></canvas>
-                    <canvas class="circle" width=110 height=110></canvas>
-                </td>
-                <td id="mid">
-                    <canvas class="cross" width=110 height=110></canvas>
-                    <canvas class="circle" width=110 height=110></canvas>
-                </td>
-                <td id="right">
-                    <canvas class="cross" width=110 height=110></canvas>
-                    <canvas class="circle" width=110 height=110></canvas>
-                </td>
-            </tr>
-            <tr>
-                <td id="botLeft">
-                    <canvas class="cross" width=110 height=110></canvas>
-                    <canvas class="circle" width=110 height=110></canvas>
-                </td>
-                <td id="bot">
-                    <canvas class="cross" width=110 height=110></canvas>
-                    <canvas class="circle" width=110 height=110></canvas>
-                </td>
-                <td id="botRight">
-                    <canvas class="cross" width=110 height=110></canvas>
-                    <canvas class="circle" width=110 height=110></canvas>
-                </td>
-            </tr>
-        </tbody>
-    </table>
+        <table>
+            <tbody>
+                <tr>
+                    <td id="topLeft">
+                        <canvas class="cross" width="110" height="110"></canvas>
+                        <canvas class="circle" width="110" height="110"></canvas>
+                    </td>
+                    <td id="top">
+                        <canvas class="cross" width="110" height="110"></canvas>
+                        <canvas class="circle" width="110" height="110"></canvas>
+                    </td>
+                    <td id="topRight">
+                        <canvas class="cross" width="110" height="110"></canvas>
+                        <canvas class="circle" width="110" height="110"></canvas>
+                    </td>
+                </tr>
+                <tr>
+                    <td id="left">
+                        <canvas class="cross" width="110" height="110"></canvas>
+                        <canvas class="circle" width="110" height="110"></canvas>
+                    </td>
+                    <td id="mid">
+                        <canvas class="cross" width="110" height="110"></canvas>
+                        <canvas class="circle" width="110" height="110"></canvas>
+                    </td>
+                    <td id="right">
+                        <canvas class="cross" width="110" height="110"></canvas>
+                        <canvas class="circle" width="110" height="110"></canvas>
+                    </td>
+                </tr>
+                <tr>
+                    <td id="botLeft">
+                        <canvas class="cross" width="110" height="110"></canvas>
+                        <canvas class="circle" width="110" height="110"></canvas>
+                    </td>
+                    <td id="bot">
+                        <canvas class="cross" width="110" height="110"></canvas>
+                        <canvas class="circle" width="110" height="110"></canvas>
+                    </td>
+                    <td id="botRight">
+                        <canvas class="cross" width="110" height="110"></canvas>
+                        <canvas class="circle" width="110" height="110"></canvas>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
 
-    <div class="btn"><button id="resetbtn">&#8635;</button></div>
+        <div class="btn"><button id="resetbtn">&#8635;</button></div>
 
-    <script src="script.js"></script>
-</body>
+        <script src="script.js"></script>
+    </body>
 </html>
