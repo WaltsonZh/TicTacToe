@@ -171,15 +171,22 @@ function algorithm() {
         return -1
     }
 
-    let index
+    let index, tmp
     // do {
     // 	index = Math.floor(Math.random() * 9);
     // } while (empty[index] == false);
 
-    let tmp
-
     switch (rounds) {
         case 1: // player: X, AI: O
+            tmp = game.indexOf(1)
+            if (tmp == 0 || tmp == 2 || tmp == 6 || tmp == 8) {
+                index = 4
+            } else if (tmp == 1 || tmp == 3 || tmp == 5 || tmp == 7) {
+                index = 8 - tmp
+            } else {
+                // tmp == 4
+                index = 0
+            }
             break
         case 2: // player: O, AI: X
             tmp = game.indexOf(-1)
@@ -197,6 +204,42 @@ function algorithm() {
             }
             break
         case 3:
+            index = checkline(1)
+            if (index == -1) {
+                tmp = game.indexOf(1)
+                if (tmp == 0 || tmp == 2) {
+                    if (game[4] == 0) {
+                        index = 8 - tmp
+                    } else {
+                        index = game[7] == 0 ? 7 : 5 - tmp
+                    }
+                } else if (tmp == 1) {
+                    if (game[4] == 0) {
+                        if (game[3] == 0 || game[5] == 0) {
+                            index = game[6] == 0 && game[3] == 0 ? 0 : 2
+                        } else {
+                            index = game[3] == -1 ? 8 : 6
+                        }
+                    } else if (game[4] == -1) {
+                        tmp = game.indexOf(1, 2)
+                        index = tmp == 6 ? 5 : 3
+                    } else {
+                        index = 2
+                    }
+                } else if (tmp == 3 || tmp == 5) {
+                    if (game[4] == 0) {
+                        if (game[3] == 0 || game[5] == 0) {
+                            index = game[3] == 0 ? 6 : 8
+                        } else {
+                            index = game[3] == 1 ? 0 : 2
+                        }
+                    } else {
+                        index = 0
+                    }
+                } else {
+                    index = game[3] == 0 ? 6 : 8
+                }
+            }
             break
         case 4:
             index = checkline(1)
@@ -217,6 +260,10 @@ function algorithm() {
             }
             break
         case 5:
+            index = checkline(-1)
+            if (index == -1) {
+                index = checkline(1)
+            }
             break
         case 6:
             index = checkline(1)
@@ -235,6 +282,14 @@ function algorithm() {
             }
             break
         case 7:
+            index = checkline(-1)
+            if (index == -1) {
+                index = checkline(1)
+            }
+            if (index == -1) {
+                index = game.indexOf(0)
+            }
+
             break
         case 8:
             index = game.indexOf(0)
