@@ -68,6 +68,12 @@ circle.forEach((cir) => {
     cav.fill()
 })
 
+crossbtn.addEventListener('click', () => {
+    crossbtn.disabled = true
+    circlebtn.disabled = true
+    document.getElementById('hint').innerHTML = 'Turn of &times;'
+})
+
 circlebtn.addEventListener('click', () => {
     crossbtn.disabled = true
     circlebtn.disabled = true
@@ -77,12 +83,6 @@ circlebtn.addEventListener('click', () => {
         enabled = false
         show(board[1], 1)
     }, 600)
-})
-
-crossbtn.addEventListener('click', () => {
-    crossbtn.disabled = true
-    circlebtn.disabled = true
-    document.getElementById('hint').innerHTML = 'Turn of &times;'
 })
 
 board.forEach((block, index) => {
