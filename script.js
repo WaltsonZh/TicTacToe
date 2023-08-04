@@ -246,6 +246,13 @@ function algorithm() {
             if (index == -1) {
                 index = checkline(1)
             }
+            if (index == -1) {
+                if (game[4] == -1) {
+                    index = game[1] == 0 ? 1 : 3
+                } else {
+                    index = game[1] == 1 ? 6 : 2
+                }
+            }
             break
         case 6:
             index = checkline(1)
@@ -271,7 +278,6 @@ function algorithm() {
             if (index == -1) {
                 index = game.indexOf(0)
             }
-
             break
         case 8:
             index = game.indexOf(0)
