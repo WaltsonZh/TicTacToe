@@ -178,14 +178,10 @@ function algorithm() {
 
     switch (rounds) {
         case 1: // player: X, AI: O
-            tmp = game.indexOf(1)
-            if (tmp == 0 || tmp == 2 || tmp == 6 || tmp == 8) {
-                index = 4
-            } else if (tmp == 1 || tmp == 3 || tmp == 5 || tmp == 7) {
-                index = 8 - tmp
-            } else {
-                // tmp == 4
+            if (game[4] == 1) {
                 index = 0
+            } else {
+                index = 4
             }
             break
         case 2: // player: O, AI: X
@@ -214,30 +210,16 @@ function algorithm() {
                         index = game[7] == 0 ? 7 : 5 - tmp
                     }
                 } else if (tmp == 1) {
-                    if (game[4] == 0) {
-                        if (game[3] == 0 || game[5] == 0) {
-                            index = game[6] == 0 && game[3] == 0 ? 0 : 2
-                        } else {
-                            index = game[3] == -1 ? 8 : 6
-                        }
-                    } else if (game[4] == -1) {
-                        tmp = game.indexOf(1, 2)
-                        index = tmp == 6 ? 5 : 3
+                    tmp = game.indexOf(1, 2)
+                    if (tmp == 7) {
+                        index = 0
                     } else {
-                        index = 2
+                        index = tmp > 5 ? tmp - 6 : tmp + 3
                     }
                 } else if (tmp == 3 || tmp == 5) {
-                    if (game[4] == 0) {
-                        if (game[3] == 0 || game[5] == 0) {
-                            index = game[3] == 0 ? 6 : 8
-                        } else {
-                            index = game[3] == 1 ? 0 : 2
-                        }
-                    } else {
-                        index = 0
-                    }
+                    index = game[7] == 1 ? tmp - 3 : tmp + 3
                 } else {
-                    index = game[3] == 0 ? 6 : 8
+                    index = 2
                 }
             }
             break
