@@ -1,3 +1,3 @@
 # TicTacToe
 
-Tic-Tac-Toe web app implemented by vanilla js.
+Tic-Tac-Toe web app implemented with vanilla js.
