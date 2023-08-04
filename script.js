@@ -19,7 +19,6 @@ const lines = [
     [2, 4, 6],
 ]
 
-let empty = new Array(9).fill(true)
 let playerX = true
 let enabled = true
 let rounds = 0
@@ -90,7 +89,7 @@ board.forEach((block, index) => {
     block.addEventListener('click', () => {
         crossbtn.disabled = true
         circlebtn.disabled = true
-        if (empty[index] && enabled) {
+        if (game[index] == 0 && enabled) {
             show(block, index)
 
             setTimeout(() => {
@@ -106,7 +105,7 @@ board.forEach((block, index) => {
     })
 
     block.addEventListener('mouseover', () => {
-        if (empty[index]) {
+        if (game[index] == 0) {
             blockMouseover(block)
         }
     })
@@ -126,7 +125,6 @@ resetbtn.addEventListener('click', () => {
     crossbtn.disabled = false
     circlebtn.disabled = false
     resetbtn.style.display = 'none'
-    empty.fill(true)
     playerX = true
     rounds = 0
     enabled = true
@@ -147,7 +145,6 @@ function show(block, index) {
         game[index] = -1
     }
     block.style.backgroundColor = 'hsl(210, 40%, 40%)'
-    empty[index] = false
     rounds += 1
     enabled = !enabled
     playerX = !playerX
@@ -172,9 +169,6 @@ function algorithm() {
     }
 
     let index, tmp
-    // do {
-    // 	index = Math.floor(Math.random() * 9);
-    // } while (empty[index] == false);
 
     switch (rounds) {
         case 1: // player: X, AI: O
@@ -303,10 +297,6 @@ function showResult() {
 
     if (rounds == 9 && finished != true) {
         document.getElementById('hint').innerHTML = 'Draw!'
-    }
-
-    if (finished || rounds == 9) {
-        empty.fill(false)
     }
 }
 
