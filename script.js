@@ -1,9 +1,10 @@
 /*
 Author: WaltsonZh
-
-This script implements a simple Tic-Tac-Toe game with a basically impossible-to-beat AI opponent.
-The game also provides buttons to reset the game and to choose between "X" and "O".
-If the player choose "X", they go first, if they choose "O", the AI goes first.
+File: script.js
+Description:
+    This script implements a simple Tic-Tac-Toe game with a basically impossible-to-beat AI opponent.
+    The game also provides buttons to reset the game and to choose between "X" and "O".
+    If the player choose "X", they go first, if they choose "O", the AI goes first.
 */
 
 // Get references to HTML elements
