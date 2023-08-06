@@ -1,13 +1,20 @@
-const board = document.querySelectorAll('td')
+/*
+Author: WaltsonZh
 
+This script implements a simple Tic-Tac-Toe game with a basically impossible-to-beat AI opponent.
+The game also provides buttons to reset the game and to choose between "X" and "O".
+If the player choose "X", they go first, if they choose "O", the AI goes first.
+*/
+
+// Get references to HTML elements
+const board = document.querySelectorAll('td')
 const crossbtn = document.getElementById('crossbtn')
 const circlebtn = document.getElementById('circlebtn')
-
 const resetbtn = document.getElementById('resetbtn')
-
 const cross = document.querySelectorAll('.cross')
 const circle = document.querySelectorAll('.circle')
 
+// Define winning combinations as a 2d array
 const lines = [
     [0, 1, 2],
     [3, 4, 5],
@@ -19,13 +26,14 @@ const lines = [
     [2, 4, 6],
 ]
 
+// Initialize game variables
 let playerX = true
 let enabled = true
 let rounds = 0
-
 let game = new Array(9).fill(0) // 0: empty, 1: cross, -1: circle
 let finished = false
 
+// Draw the "cross" shape on the canvas elements
 cross.forEach((cro) => {
     const centerX = cro.width / 2
     const centerY = cro.height / 2
@@ -49,6 +57,7 @@ cross.forEach((cro) => {
     cav.stroke()
 })
 
+// Draw the "circle" shape on the canvas elements
 circle.forEach((cir) => {
     const centerX = cir.width / 2
     const centerY = cir.height / 2
@@ -68,23 +77,27 @@ circle.forEach((cir) => {
     cav.fill()
 })
 
+// Event listener for the "cross" button
 crossbtn.addEventListener('click', () => {
     crossbtn.disabled = true
     circlebtn.disabled = true
     document.getElementById('hint').innerHTML = 'Turn of &times;'
 })
 
+// Event listener for the "circle" button
 circlebtn.addEventListener('click', () => {
     crossbtn.disabled = true
     circlebtn.disabled = true
     document.getElementById('hint').innerHTML = 'Turn of &times;'
 
+    // Delayed AI move for showing the first "O" symbol
     setTimeout(() => {
         enabled = false
         show(board[1], 1)
     }, 600)
 })
 
+// Event listeners for the game board blocks
 board.forEach((block, index) => {
     block.addEventListener('click', () => {
         crossbtn.disabled = true
@@ -92,6 +105,7 @@ board.forEach((block, index) => {
         if (game[index] == 0 && enabled) {
             show(block, index)
 
+            // Delayed AI move after showing player's symbol
             setTimeout(() => {
                 position = algorithm()
                 if (position != -1) {
@@ -115,6 +129,8 @@ board.forEach((block, index) => {
     })
 })
 
+
+// Event listener for the "reset" button
 resetbtn.addEventListener('click', () => {
     board.forEach((block) => {
         block.querySelectorAll('canvas').forEach((cav) => {
@@ -122,6 +138,7 @@ resetbtn.addEventListener('click', () => {
         })
     })
 
+    // Enable the buttons and reset game variables
     crossbtn.disabled = false
     circlebtn.disabled = false
     resetbtn.style.display = 'none'
@@ -134,6 +151,7 @@ resetbtn.addEventListener('click', () => {
     document.getElementById('hint').innerHTML = 'Chose your turn &uparrow;'
 })
 
+// Function to handle player's move and update game state
 function show(block, index) {
     if (playerX) {
         block.querySelector('.cross').style.display = 'inline'
@@ -150,19 +168,23 @@ function show(block, index) {
     playerX = !playerX
     showResult()
 
+    // Show the "reset" button if the game is finished or it's a draw
     if (finished || rounds == 9) {
         resetbtn.style.display = 'inline'
     }
 }
 
+// Function to change block background color when the mouse is over it
 function blockMouseover(block) {
     block.style.backgroundColor = 'hsl(210, 40%, 45%)'
 }
 
+// Function to reset block background color when the mouse leaves it
 function blockMouseleave(block) {
     block.style.backgroundColor = 'hsl(210, 40%, 40%)'
 }
 
+// Function to determine AI's move using a impossible-to-beat algorithm
 function algorithm() {
     if (rounds == 9 || finished) {
         return -1
@@ -281,6 +303,7 @@ function algorithm() {
     return index
 }
 
+// Function to check and display the game result after each move
 function showResult() {
     let tmp
     for (const line of lines) {
@@ -300,6 +323,7 @@ function showResult() {
     }
 }
 
+// Function to check if a winning move is possible in the current game state
 function checkline(s) {
     let index = -1
     for (const line of lines) {
